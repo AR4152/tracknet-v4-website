@@ -1,0 +1,43 @@
+name: on-push
+run-name: on push to main
+
+on:
+  push:
+    branches:
+      - deploy
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  push_files_to_time_lab_website_repo:
+    runs-on: ubuntu-latest
+      steps:
+        - name: Checkout the repository
+          uses: actions/checkout@v3
+        
+        # Copy all files except 'README.md' from the root directory to a temporary folder
+        - name: Copy files except README.md
+          run: |
+            # Create a temporary folder
+            mkdir temp_directory
+
+            # Copy all files from root, excluding README.md
+            find . -maxdepth 1 -not -name 'README.md' -exec cp -r {} temp_directory/ \;
+
+        - name: Push files to another repository
+          uses: nkoppel/push-files-to-another-repository@v1.1.3
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+          with:
+            source-files: 'temp_directory'
+            destination-username: 'time-lab-anu'
+            destination-repository: 'time-lab-anu.github.io'
+            destination-directory: 'paper-sites/tracknet-v4'
+            destination-branch: 'main'
+            commit-email: 
+            
+        - name: Log success
+          run: echo "Files have been successfully copied!"
