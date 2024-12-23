@@ -37,7 +37,7 @@ jobs:
           destination-repository: 'time-lab-anu.github.io'
           destination-directory: 'paper-sites/tracknet-v4'
           destination-branch: 'main'
-          commit-email: 
+          commit-email: '87035926+AR4152@users.noreply.github.com'
           
       - name: Log success
         run: echo "Files have been successfully copied!"
