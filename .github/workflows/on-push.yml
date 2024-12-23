@@ -1,5 +1,5 @@
 name: on-push
-run-name: on push to main
+run-name: on push to deploy
 
 on:
   push:
