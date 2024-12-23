@@ -411,20 +411,71 @@
 <!-- End download section -->
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{raj2024tracknetv4enhancingfastsports,
-        title={TrackNetV4: Enhancing Fast Sports Object Tracking with Motion Attention Maps}, 
-        author={Arjun Raj and Lei Wang and Tom Gedeon},
-        year={2024},
-        eprint={2409.14543},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV},
-        url={https://arxiv.org/abs/2409.14543}, 
-  }</code></pre>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">BibTeX Citation</h2>
+    <p class="has-text-centered">Here is the BibTeX entry for referencing our work:</p>
+    <div class="box" style="position: relative;">
+      <pre><code class="language-bibtex" id="bibtex-code">@INPROCEEDINGS{tracknetv4,
+  author={Raj, Arjun and Wang, Lei and Gedeon, Tom},
+  booktitle={ICASSP 2025 - 2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={TrackNetV4: Enhancing Fast Sports Object Tracking with Motion Attention Maps}, 
+  year={2025},
+  volume={},
+  number={},
+  url={https://arxiv.org/abs/2409.14543}
+}</code></pre>
+      <!-- Copy Icon Button -->
+      <button class="button is-small is-light is-rounded" id="copy-button" onclick="copyToClipboard()" style="position: absolute; top: 10px; right: 10px; z-index: 10; background-color: #209cee; color: white;">
+        <i id= "copy-icon" class="fas fa-copy"></i>
+      </button>      
+      <!-- Text copied message -->
+      <div id="copy-message" class="notification is-primary is-hidden copy-message">
+        Text copied!
+      </div>
     </div>
+  </div>
 </section>
+
+<script>
+  function copyToClipboard() {
+    const bibtexCode = document.getElementById('bibtex-code').textContent;
+    const textarea = document.createElement('textarea');
+    textarea.value = bibtexCode;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    // Change button icon to show feedback
+    const button = document.getElementById('copy-button');
+    // console.log(button)
+    const iconElement = document.getElementById('copy-icon');
+    iconElement.classList.remove('fa-copy');
+    iconElement.classList.add('fa-check');
+    
+    // Show "Text copied" message
+    const copyMessage = document.getElementById('copy-message');
+    copyMessage.classList.remove('is-hidden'); // Make the message visible
+    copyMessage.classList.add('is-visible');
+
+    // Reset after 1.5 seconds
+    setTimeout(() => {
+      const iconElement = document.getElementById('copy-icon');
+      iconElement.classList.remove('fa-check');
+      iconElement.classList.add('fa-copy');  // Restore the original icon
+      copyMessage.classList.remove('is-visible');
+      copyMessage.classList.add('is-hidden');
+    }, 2000);
+  }
+</script>
+
+
+<!-- Add FontAwesome CDN link for the icons -->
+<!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+
+
+
 <!--End BibTex citation -->
 
 
