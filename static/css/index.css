@@ -83,6 +83,9 @@ body {
 }
 
 .publication-banner img {
+  display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center (optional if needed) */
 }
 
 .publication-authors {
