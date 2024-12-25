@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .detail-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.4s, background 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .detail-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .detail-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .detail-item:hover::before {
+            opacity: 1;
+        }
+        .detail-item span {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .detail-item span.value {
+            font-size: 1.8rem;
+            color: #ffd700;
+        }
+        .btn-refresh {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #43e97b, #38f9d7);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-refresh:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Dataset Details</h1>
+    <div class="details" id="datasetDetails">
+        <!-- Dynamic content will be injected here -->
+    </div>
+    <button class="btn-refresh" onclick="loadDatasetDetails()">Refresh Details</button>
+</div>
+
+<script>
+    // Sample dataset details
+    const dataset = {
+        videos: 120,
+        frames: 35000,
+        annotations: 1500,
+        classes: 10
+    };
+
+    // Function to load and display dataset details
+    function loadDatasetDetails() {
+        const detailsContainer = document.getElementById('datasetDetails');
+        detailsContainer.innerHTML = ''; // Clear previous content
+
+        // Add dataset details dynamically
+        for (const [key, value] of Object.entries(dataset)) {
+            const detailItem = document.createElement('div');
+            detailItem.classList.add('detail-item');
+
+            const label = document.createElement('span');
+            label.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+
+            const valueSpan = document.createElement('span');
+            valueSpan.textContent = value;
+            valueSpan.classList.add('value');
+
+            detailItem.appendChild(label);
+            detailItem.appendChild(valueSpan);
+            detailsContainer.appendChild(detailItem);
+        }
+    }
+
+    // Load dataset details on page load
+    window.onload = loadDatasetDetails;
+</script>
+
+</body>
+</html>
