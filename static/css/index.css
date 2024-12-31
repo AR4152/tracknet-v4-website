@@ -234,3 +234,114 @@ section {
 .collapse {
   visibility: collapse;
 }
+
+/* ########## */
+
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.carousel-nav-item {
+  background: none;
+  border: 1px solid #ccc;
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.carousel-nav-item:hover,
+.carousel-nav-item:focus {
+  background-color: #007bff;
+  color: white;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.db-overview {
+  border-radius: 8px;
+  /* background-color: aliceblue; */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Dataset Statistics */
+
+.container-stastics {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  /* background: whitesmoke; */
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.detail-item {
+  background: #209cee;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.4s, background 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.detail-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.detail-item:hover {
+  transform: translateY(-10px);
+  background: #209cee;
+  opacity: 90%;
+}
+.detail-item:hover::before {
+  opacity: 1;
+}
+.detail-item span {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.detail-item span.value {
+  font-size: 1.8rem;
+  color: whitesmoke;
+}
+
+
+.btn-refresh:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}

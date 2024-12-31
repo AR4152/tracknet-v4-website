@@ -13,50 +13,26 @@ $(document).ready(function() {
 			autoplaySpeed: 5000,
     }
 
-		// Initialize all div with carousel class
     var carousels = bulmaCarousel.attach('.carousel', options);
-
     bulmaSlider.attach();
+	
+	const observer = new MutationObserver(mutations => {
+		mutations.forEach(mutation => {
+			if (mutation.target.style.display !== 'none') {
+				bulmaCarousel.attach('.carousel', options);
+				bulmaSlider.attach();
+			}
+		});
+	});
+	
+	document.querySelectorAll('.carousel, .slider').forEach(el => {
+		observer.observe(el, { attributes: true, attributeFilter: ['style'] });
+	});
+	
 
-
+	const imagesContainer = document.getElementById('sample-images-container');
+	imagesContainer.style.display = 'none';
+	const videosContainer = document.getElementById('sample-videos-container');
+	videosContainer.style.display = 'none';
 	
 })
-
-// Section displayer
-
-// Make the popup draggable
-// const popup = document.getElementById('section-popup');
-// const popup = document.querySelector('#section-popup');
-// console.log(popup)
-// const header = document.getElementById('popup-header');
-// console.log(header)
-// let offsetX, offsetY;
-
-// popup.addEventListener('mousedown', function (e) {
-//   // Disable text selection to avoid issues while dragging
-//   document.body.style.userSelect = 'none';
-
-//   offsetX = e.clientX - popup.getBoundingClientRect().left;
-//   offsetY = e.clientY - popup.getBoundingClientRect().top;
-
-//   function onMouseMove(e) {
-// 	popup.style.left = (e.clientX - offsetX) + 'px';
-// 	popup.style.top = (e.clientY - offsetY) + 'px';
-//   }
-
-//   function onMouseUp() {
-// 	window.removeEventListener('mousemove', onMouseMove);
-// 	window.removeEventListener('mouseup', onMouseUp);
-// 	// Re-enable text selection
-// 	document.body.style.userSelect = '';
-//   }
-
-//   window.addEventListener('mousemove', onMouseMove);
-//   window.addEventListener('mouseup', onMouseUp);
-// });
-
-// // Minimize/restore functionality
-// const minimizeButton = document.getElementById('minimize-btn');
-// minimizeButton.addEventListener('click', function () {
-//   popup.classList.toggle('minimized');
-// });

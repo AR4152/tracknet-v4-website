@@ -260,66 +260,236 @@
       <section id="dataset-overview" class="hero is-small show-in-section-popup">
          <h2 class="title is-3 has-text-centered">Dataset Overview</h2>
          <div class="buttons-container" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 0px;">
-            <button id="dataset-statistics-button" class="button is-info">Click to view statistics</button>
+            <button id="dataset-statistics-button" class="button is-info active-button">Collapse statistics</button>
             <button id="dataset-images-button" class="button is-info">Click to view sample frames</button>
             <button id="dataset-videos-button" class="button is-info">Click to view sample videos</button>
          </div>
          <div class="hero-body">
-            <div class="container">
-               <div id="results-carousel" class="carousel results-carousel">
+
+            <!-- Dataset Statistic Container -->
+            <div id="dataset-statistic-container" class="container container-stastics" style="display: block;">
+               <div class="details" id="datasetDetails">
+                  <!-- Dynamic content will be injected here -->
+              </div>
+            </div>
+
+            <!-- Sample Images Container -->
+            <div id="sample-images-container" class="container">
+               <div id="dataset-images-carousel" class="carousel results-carousel db-overview" style="display: flex;">
                   <div class="item">
-                     <!-- Your image here -->
-                     <img src="static/images/dataset/ball_blend_court.png" alt="MY ALT TEXT"/>
+                     <img src="static/images/dataset/ball_blend_court.png" alt="Balls blend with the court"/>
                      <h2 class="subtitle has-text-centered">
-                        First image description.
+                        Balls blend with the court.
                      </h2>
                   </div>
                   <div class="item">
-                     <!-- Your image here -->
-                     <img src="static/images/dataset/ball_camouflage_court.png" alt="MY ALT TEXT"/>
+                     <img src="static/images/dataset/ball_camouflage_court.png" alt="Ball camouflages with the court"/>
                      <h2 class="subtitle has-text-centered">
-                        First image description.
+                        Ball camouflages with the court.
                      </h2>
                   </div>
                   <div class="item">
-                     <!-- Your image here -->
-                     <img src="static/images/dataset/doubles_match.png" alt="MY ALT TEXT"/>
+                     <img src="static/images/dataset/doubles_match.png" alt="Doubles match"/>
                      <h2 class="subtitle has-text-centered">
-                        First image description.
+                        Doubles match.
                      </h2>
                   </div>
                   <div class="item">
-                     <!-- Your image here -->
-                     <img src="static/images/dataset/multi_ball_play.png" alt="MY ALT TEXT"/>
+                     <img src="static/images/dataset/multi_ball_play.png" alt="Multiple balls in play"/>
                      <h2 class="subtitle has-text-centered">
-                        First image description.
+                        Multiple balls in play.
                      </h2>
                   </div>
                   <div class="item">
-                     <!-- Your image here -->
-                     <img src="static/images/dataset/multi_court_play.png" alt="MY ALT TEXT"/>
+                     <img src="static/images/dataset/multi_court_play.png" alt="Visible balls in play on two courts"/>
                      <h2 class="subtitle has-text-centered">
-                        First image description.
+                        Visible balls in play on two courts.
                      </h2>
                   </div>
                   <div class="item">
-                     <!-- Your image here -->
-                     <img src="static/images/dataset/night_time.png" alt="MY ALT TEXT"/>
+                     <img src="static/images/dataset/night_time.png" alt="Nighttime match"/>
                      <h2 class="subtitle has-text-centered">
-                        First image description.
+                        Nighttime match.
                      </h2>
                   </div>
                   <div class="item">
-                     <!-- Your image here -->
-                     <img src="static/images/dataset/singles_game.png" alt="MY ALT TEXT"/>
+                     <img src="static/images/dataset/singles_game.png" alt="Singles match"/>
                      <h2 class="subtitle has-text-centered">
-                        First image description.
+                        Singles match.
                      </h2>
                   </div>
                </div>
             </div>
+
+
+            <!-- Sample Videos Container -->
+            <div id="sample-videos-container" class="container db-overview">
+               <div id="results-carousel" class="carousel results-carousel">
+                  <div class="item item-video1">
+                     <video poster="" id="video1" autoplay controls muted loop height="100%">
+                        <!-- Your video file here -->
+                        <source src="static/videos/carousel1.mp4"
+                           type="video/mp4">
+                     </video>
+                  </div>
+                  <div class="item item-video2">
+                     <video poster="" id="video2" autoplay controls muted loop height="100%">
+                        <!-- Your video file here -->
+                        <source src="static/videos/carousel2.mp4"
+                           type="video/mp4">
+                     </video>
+                  </div>
+                  <div class="item item-video3">
+                     <video poster="" id="video3" autoplay controls muted loop height="100%">
+                        \
+                        <!-- Your video file here -->
+                        <source src="static/videos/carousel3.mp4"
+                           type="video/mp4">
+                     </video>
+                  </div>
+               </div>
+            </div>
+
          </div>
       </section>
+      <script>
+         // Sample dataset details
+         const dataset = {
+             videos: 120,
+             frames: 35000,
+             annotations: 1500,
+             classes: 10,
+             videos1: 120,
+             frames1: 35000,
+             annotations1: 1500,
+             classes1: 10
+         };
+     
+         // Function to load and display dataset details
+         function loadDatasetDetails() {
+             const detailsContainer = document.getElementById('datasetDetails');
+             detailsContainer.innerHTML = ''; // Clear previous content
+     
+             // Add dataset details dynamically
+             for (const [key, value] of Object.entries(dataset)) {
+                 const detailItem = document.createElement('div');
+                 detailItem.classList.add('detail-item');
+     
+                 const label = document.createElement('span');
+                 label.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+                 label.style.fontWeight = "bold";
+                 label.style.color = "white";
+                  // label.style.fontSize = "35px";
+     
+                 const valueSpan = document.createElement('span');
+                 valueSpan.textContent = value;
+                 valueSpan.classList.add('value');
+     
+                 detailItem.appendChild(label);
+                 detailItem.appendChild(valueSpan);
+                 detailsContainer.appendChild(detailItem);
+             }
+         }
+     
+         // Load dataset details on page load
+         window.onload = loadDatasetDetails;
+     </script>
+      <script>
+         // JavaScript to toggle visibility and glowing button styles
+         document.getElementById('dataset-statistics-button').addEventListener('click', function () {
+            const statisitcsContainer = document.getElementById('dataset-statistic-container');
+            const imagesContainer = document.getElementById('sample-images-container');
+            const videosContainer = document.getElementById('sample-videos-container');
+
+            const statisticsButton = document.getElementById('dataset-statistics-button');
+            const sampleImagesButton = document.getElementById('dataset-images-button');
+            const sampleVideosButton = document.getElementById('dataset-videos-button');
+
+            if (statisitcsContainer.style.display === 'none' || statisitcsContainer.style.display === '') {
+
+               statisitcsContainer.style.display = 'block';
+               imagesContainer.style.display = 'none';
+               videosContainer.style.display = 'none';
+         
+               // Update button styles
+               this.classList.add('active-button');
+               sampleImagesButton.classList.remove('active-button');
+               sampleVideosButton.classList.remove('active-button');
+
+               this.textContent = 'Collapse Statistics';
+               sampleImagesButton.textContent = 'Click to view Sample Frames';
+               sampleVideosButton.textContent = 'Click to view Sample Videos';
+            } else {
+               statisitcsContainer.style.display = 'none';
+         
+               // Reset button styles
+               this.classList.remove('active-button');
+               this.textContent = 'Click to view Statistics';
+            }
+         });
+         
+         document.getElementById('dataset-images-button').addEventListener('click', function () {
+            const statisitcsContainer = document.getElementById('dataset-statistic-container');
+            const imagesContainer = document.getElementById('sample-images-container');
+            const videosContainer = document.getElementById('sample-videos-container');
+
+            const statisticsButton = document.getElementById('dataset-statistics-button');
+            const sampleImagesButton = document.getElementById('dataset-images-button');
+            const sampleVideosButton = document.getElementById('dataset-videos-button');
+
+            if (imagesContainer.style.display === 'none' || imagesContainer.style.display === '') {
+               imagesContainer.style.display = 'block';
+               statisitcsContainer.style.display = 'none';
+               videosContainer.style.display = 'none';
+         
+               // Update button styles
+               this.classList.add('active-button');
+               statisticsButton.classList.remove('active-button');
+               sampleVideosButton.classList.remove('active-button');
+
+               this.textContent = 'Collapse Sample Images';
+               statisticsButton.textContent = 'Click to view Statistics';
+               sampleVideosButton.textContent = 'Click to view Sample Videos';
+            } else {
+               imagesContainer.style.display = 'none';
+         
+               // Reset button styles
+               this.classList.remove('active-button');
+               this.textContent = 'Click to view Sample Images';
+            }
+         });
+
+         document.getElementById('dataset-videos-button').addEventListener('click', function () {
+            const statisitcsContainer = document.getElementById('dataset-statistic-container');
+            const imagesContainer = document.getElementById('sample-images-container');
+            const videosContainer = document.getElementById('sample-videos-container');
+
+            const statisticsButton = document.getElementById('dataset-statistics-button');
+            const sampleImagesButton = document.getElementById('dataset-images-button');
+            const sampleVideosButton = document.getElementById('dataset-videos-button');
+
+            if (videosContainer.style.display === 'none' || videosContainer.style.display === '') {
+               videosContainer.style.display = 'block';
+               statisitcsContainer.style.display = 'none';
+               imagesContainer.style.display = 'none';
+         
+               // Update button styles
+               this.classList.add('active-button');
+               statisticsButton.classList.remove('active-button');
+               sampleImagesButton.classList.remove('active-button');
+
+               this.textContent = 'Collapse Sample Videos';
+               statisticsButton.textContent = 'Click to view Statistics';
+               sampleImagesButton.textContent = 'Click to view Sample Images';
+            } else {
+               videosContainer.style.display = 'none';
+         
+               // Reset button styles
+               this.classList.remove('active-button');
+               this.textContent = 'Click to view Sample Videos';
+            }
+         });
+      </script>
       <!-- End image carousel -->
       <hr style="border-top: 2px dashed #209cee; margin-top: 0.1%;">
       <!-- Download section -->
