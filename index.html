@@ -176,9 +176,19 @@
          <h2 style="visibility: hidden;">Introduction</h2>
          <div class="container is-max-desktop">
             <div class="hero-body">
-               <div class="image-container" style="text-align: center;">
-                  <img src="./static/images/main_fig.png" alt="Abstract Section Image" style="max-width: 75%; height: auto;">
-               </div>
+
+               <!-- Expandable image -->
+               <div class="image-container">
+                  <img id="expandableImage" src="./static/images/main_fig.png" alt="Abstract Section Image">
+              </div>
+          
+              <!-- Modal -->
+              <div id="imageModal" class="modal">
+                  <span class="close" onclick="closeModal()">&times;</span>
+                  <img id="modalImage" src="./static/images/main_fig.png" alt="Expanded Image">
+              </div>
+
+
                <p class="subtitle has-text-centered">
                   We propose using learnable motion attention maps to enhance the tracking of high-speed, small objects in video frames. While demonstrated with TrackNetV2, our approach can be seamlessly integrated into any heatmap-based detection and tracking framework.
                   <br>
