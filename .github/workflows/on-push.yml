@@ -24,8 +24,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source-files: 'index.html static/'
-          destination-username: 'time-lab-anu'
-          destination-repository: 'time-lab-anu.github.io'
+          destination-username: 'time-lab-ml'
+          destination-repository: 'time-lab-ml.github.io'
           destination-directory: 'paper-sites/tracknet-v4'
           destination-branch: 'main'
           commit-email: '87035926+AR4152@users.noreply.github.com'
