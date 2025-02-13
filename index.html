@@ -252,15 +252,15 @@
                                   `;
                                   videoTableBody.innerHTML += row;
                               }
-                          
+
+                              // Prevent all other videos from playing automatically
+                              // document.querySelectorAll("#prediction-videos tbody").forEach(video => {
+                              //     video.pause();
+                              // });
+
                               // Play only the first row's videos
                               document.querySelectorAll("#prediction-videos tbody tr:first-child").forEach(video => {
                                   video.play();
-                              });
-                          
-                              // Prevent all other videos from playing automatically
-                              document.querySelectorAll("#prediction-videos tbody tr:not(:first-child)").forEach(video => {
-                                  video.pause();
                               });
                           </script>
                          </tbody>
@@ -322,78 +322,32 @@
                </div>
             </div>
          </div>
-
-
-         <div id="visualization" class="container">
-            <div id="dataset-images-carousel" class="carousel results-carousel db-overview" style="display: flex;">
-               <div class="item">
-                  <img src="static/images/dataset/ball_blend_court.png" alt="Balls blend with the court"/>
-                  <h2 class="subtitle has-text-centered">
-                     Balls blend with the court.
-                  </h2>
-               </div>
-               <div class="item">
-                  <img src="static/images/dataset/ball_camouflage_court.png" alt="Ball camouflages with the court"/>
-                  <h2 class="subtitle has-text-centered">
-                     Ball camouflages with the court.
-                  </h2>
-               </div>
-               <div class="item">
-                  <img src="static/images/dataset/doubles_match.png" alt="Doubles match"/>
-                  <h2 class="subtitle has-text-centered">
-                     Doubles match.
-                  </h2>
-               </div>
-               <div class="item">
-                  <img src="static/images/dataset/multi_ball_play.png" alt="Multiple balls in play"/>
-                  <h2 class="subtitle has-text-centered">
-                     Multiple balls in play.
-                  </h2>
-               </div>
-               <div class="item">
-                  <img src="static/images/dataset/multi_court_play.png" alt="Visible balls in play on two courts"/>
-                  <h2 class="subtitle has-text-centered">
-                     Visible balls in play on two courts.
-                  </h2>
-               </div>
-               <div class="item">
-                  <img src="static/images/dataset/night_time.png" alt="Nighttime match"/>
-                  <h2 class="subtitle has-text-centered">
-                     Nighttime match.
-                  </h2>
-               </div>
-               <div class="item">
-                  <img src="static/images/dataset/singles_game.png" alt="Singles match"/>
-                  <h2 class="subtitle has-text-centered">
-                     Singles match.
-                  </h2>
-               </div>
-            </div>
-         </div>
-
       </section>
       <!-- End video carousel -->
       <hr style="border-top: 2px dashed #209cee; margin-top: 0.1%;">
       <!-- Image carousel -->
       <section id="dataset-overview" class="hero is-small show-in-section-popup">
          <h2 class="title is-3 has-text-centered">Dataset Overview</h2>
-         <div class="buttons-container" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 0px;">
+         <!-- <div class="buttons-container" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 0px;">
             <button id="dataset-statistics-button" class="button is-info active-button">Collapse statistics</button>
             <button id="dataset-images-button" class="button is-info">Click to view sample frames</button>
             <button id="dataset-videos-button" class="button is-info">Click to view sample videos</button>
-         </div>
+         </div> -->
          <div class="hero-body">
 
             <!-- Dataset Statistic Container -->
+            <h2 class="title is-3 has-text-centered" style="font-weight: normal;">Dataset Statistics</h2>
             <div id="dataset-statistic-container" class="container container-stastics" style="display: block;">
                <div class="details" id="datasetDetails">
                   <!-- Dynamic content will be injected here -->
               </div>
             </div>
+            <br><br>
 
             <!-- Sample Images Container -->
-            <div id="sample-images-container" class="container">
-               <div id="dataset-images-carousel" class="carousel results-carousel db-overview" style="display: flex;">
+            <h2 class="title is-3 has-text-centered" style="font-weight: normal;">Sample Images</h2>
+            <div id="sample-images-container" style="display: block;" class="container">
+               <div id="dataset-images-carousel" class="carousel results-carousel db-overview" style="display: block;">
                   <div class="item">
                      <img src="static/images/dataset/ball_blend_court.png" alt="Balls blend with the court"/>
                      <h2 class="subtitle has-text-centered">
@@ -438,14 +392,12 @@
                   </div>
                </div>
             </div>
-
+            <br><br>
 
             <!-- Sample Videos Container -->
+            <h2 class="title is-3 has-text-centered" style="font-weight: normal;">Sample Videos</h2>
             <div id="sample-videos-container" class="container">
-
-
                <div id="results-carousel" class="carousel results-carousel db-overview">
-
                   <div class="item item-video1">
                      <video poster="" id="video1" autoplay controls muted loop height="100%">
                         <source src="static/videos/dataset/video1.mp4"
@@ -476,16 +428,17 @@
       </section>
       
       <script>
+         // document.getElementById("sample-images-container").style.display = "block";
+         // document.getElementById("sample-videos-container").style.display = "block";
+
          // Sample dataset details
          const dataset = {
-             videos: 120,
-             frames: 35000,
-             annotations: 1500,
-             classes: 10,
-             videos1: 120,
-             frames1: 35000,
-             annotations1: 1500,
-             classes1: 10
+             "Train Videos": 87,
+             "Test Videos": 8,
+             "Frames": "30k+",
+             "Multi-ball Games?": "✅",
+             "Doubles Match?": "✅",
+             "Nighttime Match?": "✅"
          };
      
          // Function to load and display dataset details
@@ -517,7 +470,7 @@
          // Load dataset details on page load
          window.onload = loadDatasetDetails;
      </script>
-      <script>
+      <!-- <script>
          // JavaScript to toggle visibility and glowing button styles
          document.getElementById('dataset-statistics-button').addEventListener('click', function () {
             const statisitcsContainer = document.getElementById('dataset-statistic-container');
@@ -611,7 +564,7 @@
                this.classList.remove('active-button');
                this.textContent = 'Click to view Sample Videos';
             }
-         });
+         }); -->
 
 
 

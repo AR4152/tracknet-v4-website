@@ -30,10 +30,10 @@ $(document).ready(function() {
 		observer.observe(el, { attributes: true, attributeFilter: ['style'] });
 	});
 
-	const imagesContainer = document.getElementById('sample-images-container');
-	imagesContainer.style.display = 'none';
-	const videosContainer = document.getElementById('sample-videos-container');
-	videosContainer.style.display = 'none';	
+	// const imagesContainer = document.getElementById('sample-images-container');
+	// imagesContainer.style.display = 'none';
+	// const videosContainer = document.getElementById('sample-videos-container');
+	// videosContainer.style.display = 'none';	
 	
 	// Expandable image
 	const img = document.getElementById("expandableImage");
