@@ -217,6 +217,62 @@
       <!-- End paper abstract -->
       <br>
       <hr style="border-top: 2px dashed #209cee; margin-top: 0.1%;">
+
+
+      <!-- Prediction video -->
+      <section id="prediction-videos" class="hero is-small show-in-section-popup">
+         <div class="hero-body">
+             <div class="container">
+                 <h2 class="title is-3 has-text-centered">Prediction Comparisons</h2>
+                 <div class="table-container">
+                     <table class="table is-striped is-fullwidth has-text-centered">
+                         <thead>
+                             <tr>
+                                 <th>Original Video</th>
+                                 <th>TrackNetV2 Prediction</th>
+                                 <th>TrackNetV4 Prediction (Type 1)</th>
+                                 <th>TrackNetV4 Prediction (Type 2)</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <!-- Generate 8 rows dynamically -->
+                             <script>
+                              const videoCount = 8;
+                              const videoTableBody = document.querySelector('#prediction-videos tbody');
+                          
+                              for (let i = 1; i <= videoCount; i++) {
+                                  let isFirstRow = i === 1; // Check if it's the first row
+                                  let row = `
+                                      <tr>
+                                          <td><video ${isFirstRow ? "autoplay" : ""} controls muted loop preload="auto" playsinline width="100%"><source src="static/videos/predictions/original/tnv4_website_prediction_original_video${i}.mp4" type="video/mp4"></video></td>
+                                          <td><video ${isFirstRow ? "autoplay" : ""} controls muted loop preload="auto" width="100%"><source src="static/videos/predictions/tracknet_v2/tnv4_website_prediction_tracknetv2_video${i}.mp4" type="video/mp4"></video></td>
+                                          <td><video ${isFirstRow ? "autoplay" : ""} controls muted loop preload="auto" width="100%"><source src="static/videos/predictions/tracknet_v4_type_1/tnv4_website_prediction_tracknet_v4_type_1_video${i}.mp4" type="video/mp4"></video></td>
+                                          <td><video ${isFirstRow ? "autoplay" : ""} controls muted loop preload="auto" width="100%"><source src="static/videos/predictions/tracknet_v4_type_2/tnv4_website_prediction_tracknet_v4_type_2_video${i}.mp4" type="video/mp4"></video></td>
+                                      </tr>
+                                  `;
+                                  videoTableBody.innerHTML += row;
+                              }
+                          
+                              // Play only the first row's videos
+                              document.querySelectorAll("#prediction-videos tbody tr:first-child").forEach(video => {
+                                  video.play();
+                              });
+                          
+                              // Prevent all other videos from playing automatically
+                              document.querySelectorAll("#prediction-videos tbody tr:not(:first-child)").forEach(video => {
+                                  video.pause();
+                              });
+                          </script>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+         </div>
+     </section>
+      <!-- End prediction video -->
+      <br>
+      <hr style="border-top: 2px dashed #209cee; margin-top: 0.1%;">
+
       <!-- Youtube video -->
       <section class="hero is-small is-light">
          <div class="hero-body">
